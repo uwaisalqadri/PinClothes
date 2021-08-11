@@ -1,6 +1,9 @@
 package com.getvalue.pinclothes.di
 
+import com.getvalue.pinclothes.data.repository.PersonRepository
 import com.getvalue.pinclothes.data.souce.remote.ApiService
+import com.getvalue.pinclothes.ui.MainViewModel
+import com.getvalue.pinclothes.utils.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -8,17 +11,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val appModule = module {
-	// viewModel etc.
+	single { MainViewModel(get()) }
 }
 
 val repositoryModule = module {
-	// repos etc.
+	single { PersonRepository(get()) }
 }
 
 val networkModule = module {
 	single {
 		Retrofit.Builder()
-			.baseUrl("Constants.BASE_URL")
+			.baseUrl(Constants.BASE_URL)
 			.addConverterFactory(GsonConverterFactory.create())
 			.client(get())
 			.build()
