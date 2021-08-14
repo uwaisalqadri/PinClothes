@@ -9,19 +9,19 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-//class BaseApplication: Application() {
-//
-//	override fun onCreate() {
-//		super.onCreate()
-//		Timber.plant(Timber.DebugTree())
-//		startKoin {
-//			androidLogger()
-//			androidContext(this@BaseApplication)
-//			modules(
-//				appModule,
-//				repositoryModule,
-//				networkModule
-//			)
-//		}
-//	}
-//}
+class BaseApplication: Application() {
+
+	override fun onCreate() {
+		super.onCreate()
+		Timber.plant(Timber.DebugTree())
+		startKoin {
+			androidLogger()
+			androidContext(this@BaseApplication)
+			modules(
+				appModule,
+				repositoryModule,
+				networkModule
+			)
+		}
+	}
+}
