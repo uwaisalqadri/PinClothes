@@ -12,9 +12,9 @@ class AuthRepository(
     private val apiService: ApiService
 ) {
 
-    suspend fun fetchLogin(username: String, password: String): Flow<ResponseLogin> {
+    suspend fun fetchLogin(email: String, password: String): Flow<ResponseLogin> {
         return flow {
-            val response = apiService.login(username, password)
+            val response = apiService.login(email, password)
 
             try {
                 if (response != null) {

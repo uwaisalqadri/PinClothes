@@ -8,7 +8,7 @@ import com.getvalue.pinclothes.data.repository.AuthRepository
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class LoginVM(
+class LoginViewModel(
     private val repository: AuthRepository
 ): ViewModel() {
 
@@ -17,9 +17,9 @@ class LoginVM(
     val loading = MutableLiveData<Boolean>()
 
 
-    fun  fetchLogin(username: String, password: String) = viewModelScope.launch {
+    fun login(email: String, password: String) = viewModelScope.launch {
         loading.value = true
-        repository.fetchLogin(username, password).collect{ login ->
+        repository.fetchLogin(email, password).collect{ login ->
             _loginData.value = login
             loading.value = false
 
