@@ -1,5 +1,5 @@
 package com.getvalue.pinclothes.utils
 
 object Constants {
-	// const val yourVariable
+	const val BASE_URL = "https://hub.dummyapis.com/"
 }
